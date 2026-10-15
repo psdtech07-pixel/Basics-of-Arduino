@@ -5,7 +5,6 @@ import { Play, Pause } from 'lucide-react';
 export default function UltrasonicSimulation() {
   const [distance, setDistance] = useState(30);
   const [auto, setAuto] = useState(true);
-  const [direction, setDirection] = useState<1 | -1>(1);
   const animRef = useRef<number | null>(null);
   const distRef = useRef(30);
   const dirRef = useRef<1 | -1>(1);
@@ -21,8 +20,8 @@ export default function UltrasonicSimulation() {
       const dt = (now - last) / 1000;
       last = now;
       distRef.current += dirRef.current * speed * dt;
-      if (distRef.current >= 80) { distRef.current = 80; dirRef.current = -1; setDirection(-1); }
-      if (distRef.current <= 5) { distRef.current = 5; dirRef.current = 1; setDirection(1); }
+      if (distRef.current >= 80) { distRef.current = 80; dirRef.current = -1; }
+      if (distRef.current <= 5) { distRef.current = 5; dirRef.current = 1; }
       setDistance(Math.round(distRef.current * 10) / 10);
       animRef.current = requestAnimationFrame(animate);
     };

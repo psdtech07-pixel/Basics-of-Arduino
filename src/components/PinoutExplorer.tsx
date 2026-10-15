@@ -46,11 +46,7 @@ const boardPins = [
   { id: 'reset', x: 50, y: 10 },
 ];
 
-interface PinDot {
-  id: string;
-  x: number;
-  y: number;
-}
+
 
 export default function PinoutExplorer() {
   const [selected, setSelected] = useState<PinInfo | null>(null);

@@ -145,7 +145,7 @@ export default function WrapUpSection() {
           <div className="rounded-2xl border border-cyan-900/30 bg-navy-800 p-6 mb-12">
             <h3 className="text-lg font-bold text-white mb-6">What to Learn Next</h3>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
-              {nextTopics.map((topic, i) => (
+              {nextTopics.map((topic, _i) => (
                 <div key={topic.title} className="p-3 rounded-xl bg-navy-900/40 border border-cyan-900/20">
                   <div className="text-sm font-bold text-cyan-400 mb-1">{topic.title}</div>
                   <div className="text-xs text-slate-500">{topic.desc}</div>

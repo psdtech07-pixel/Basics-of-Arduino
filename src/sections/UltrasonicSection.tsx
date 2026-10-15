@@ -77,7 +77,7 @@ export default function UltrasonicSection() {
               <h3 className="font-bold text-white">HC-SR04 Specifications & Timing</h3>
             </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-0">
-              {timing.map((t, i) => (
+              {timing.map((t, _i) => (
                 <div key={t.label} className="px-4 py-3 border-b border-r border-cyan-900/10">
                   <div className="text-xs text-slate-500 font-semibold mb-0.5">{t.label}</div>
                   <div className="text-xs font-mono text-cyan-400 font-semibold">{t.value}</div>
