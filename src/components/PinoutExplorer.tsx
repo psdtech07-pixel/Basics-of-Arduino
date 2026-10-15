@@ -116,6 +116,16 @@ export default function PinoutExplorer() {
                       isSelected ? 'stroke-2' : 'stroke-1'
                     }`}
                     onClick={() => handlePin(pin.id)}
+                    onKeyDown={event => {
+                      if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        handlePin(pin.id);
+                      }
+                    }}
+                    tabIndex={0}
+                    role="button"
+                    aria-label={`Explore ${info.name}`}
+                    aria-pressed={isSelected}
                     style={{ filter: isSelected ? `drop-shadow(0 0 4px currentColor)` : undefined }}
                   />
                   {isPWM && !isSelected && (

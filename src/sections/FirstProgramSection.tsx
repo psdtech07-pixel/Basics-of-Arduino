@@ -2,6 +2,7 @@ import AnimatedSection from '../components/AnimatedSection';
 import SectionHeading from '../components/SectionHeading';
 import CodeBlock from '../components/CodeBlock';
 import { codeExamples } from '../data/codeExamples';
+import BlinkCircuit from '../components/BlinkCircuit';
 
 const sketchStructure = [
   {
@@ -107,6 +108,7 @@ export default function FirstProgramSection() {
             language="cpp"
             description={blinkExample.description}
           />
+          <BlinkCircuit />
         </AnimatedSection>
 
         {/* Digital I/O */}

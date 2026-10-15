@@ -1,6 +1,7 @@
 import { motion, useReducedMotion } from 'framer-motion';
 import { ChevronDown, Cpu, Zap, Radio, Settings } from 'lucide-react';
 import CircuitBackground from '../components/CircuitBackground';
+import ParallaxScene from '../components/ParallaxScene';
 
 export default function HeroSection() {
   const shouldReduce = useReducedMotion();
@@ -107,7 +108,7 @@ export default function HeroSection() {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="flex-1 justify-center lg:justify-end relative hidden md:flex"
         >
-          <div className="relative">
+          <ParallaxScene className="hero-parallax">
             <svg viewBox="0 0 200 280" className="w-64 lg:w-80" aria-label="Arduino Uno R3 board illustration">
               <defs>
                 <linearGradient id="boardGrad" x1="0" y1="0" x2="1" y2="1">
@@ -185,7 +186,7 @@ export default function HeroSection() {
                 </motion.div>
               );
             })}
-          </div>
+          </ParallaxScene>
         </motion.div>
       </div>
 

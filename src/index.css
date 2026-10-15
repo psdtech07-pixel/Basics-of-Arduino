@@ -11,6 +11,7 @@
   --color-text: #f1f5f9;
   --color-text-muted: #94a3b8;
   --color-border: rgba(6, 182, 212, 0.2);
+  --color-line: rgba(97, 190, 211, 0.16);
 }
 
 @layer base {
@@ -25,6 +26,8 @@
   body {
     @apply bg-navy-950 text-slate-100 font-sans antialiased;
     background-color: var(--color-bg);
+    background-image: radial-gradient(ellipse at 12% 8%, rgba(8, 76, 106, .18), transparent 38%),
+      radial-gradient(ellipse at 88% 30%, rgba(12, 55, 86, .13), transparent 35%);
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -42,6 +45,7 @@
 @layer components {
   .card {
     @apply bg-navy-800 border border-cyan-900/30 rounded-2xl p-6;
+    box-shadow: inset 0 1px rgba(255,255,255,.025), 0 18px 50px rgba(0,0,0,.16);
   }
 
   .card-hover {
@@ -79,6 +83,60 @@
   .tag {
     @apply inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium;
   }
+}
+
+/* Scroll-scrubbed chapter scene kept in normal document flow (no pin, timer, or overlay). */
+.chapter-transition { position:relative; height:100vh; height:100svh; overflow:hidden; isolation:isolate; background:transparent; }
+.chapter-transition-backdrop { position:absolute; inset:0; z-index:-2; background-color:#061321; background-image:linear-gradient(rgba(76,193,221,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(76,193,221,.07) 1px,transparent 1px),radial-gradient(ellipse at 50% 50%,rgba(11,108,145,.28),transparent 62%),linear-gradient(180deg,#030812,#071522 52%,#030812); background-size:48px 48px,48px 48px,auto,auto; mask-image:radial-gradient(ellipse at center,black 20%,transparent 86%); }
+.chapter-transition-glow { position:absolute; z-index:-1; width:min(90vw,1100px); aspect-ratio:1.8; left:50%; top:4%; transform:translateX(-50%); border-radius:50%; background:radial-gradient(ellipse,rgba(20,170,219,.25),rgba(14,88,148,.12) 40%,transparent 72%); filter:blur(28px); }
+.chapter-transition-traces { position:absolute; inset:0; z-index:-1; width:100%; height:100%; }
+.chapter-transition-traces path { fill:none; stroke:rgba(67,206,232,.3); stroke-width:1.5; stroke-dasharray:7 12; }
+.chapter-transition-traces path:nth-child(2) { stroke:rgba(70,154,218,.22); stroke-dasharray:3 11; }
+.chapter-transition-traces circle { fill:#7af1ff; filter:drop-shadow(0 0 8px #22c9ff); }
+.chapter-energy-trail,.chapter-transition-mascot { position:absolute; left:50%; top:40%; height:auto; pointer-events:none; }
+.chapter-energy-trail { width:clamp(360px,62vw,760px); margin-left:clamp(-380px,-31vw,-180px); overflow:visible; }
+.chapter-transition-mascot { width:clamp(330px,48vw,620px); margin-left:clamp(-310px,-24vw,-165px); overflow:visible; filter:drop-shadow(0 14px 28px rgba(48,207,241,.36)); }
+.chapter-transition-title { position:absolute; top:65%; left:1.25rem; right:1.25rem; text-align:center; color:#effbff; text-shadow:0 0 28px rgba(62,210,240,.2); }
+.chapter-transition-title span { display:block; margin-bottom:12px; color:#76ddec; font:700 10px/1.4 ui-monospace,monospace; letter-spacing:.28em; }
+.chapter-transition-title h2 { margin:0; color:#f3fcff; font-size:clamp(27px,4.2vw,54px); line-height:1.08; letter-spacing:-.04em; font-weight:800; }
+.chapter-transition-title i { display:block; width:54px; height:2px; margin:17px auto 0; background:linear-gradient(90deg,transparent,#53ddef,transparent); box-shadow:0 0 12px rgba(53,222,255,.65); }
+.chapter-transition-static { height:clamp(160px,24vh,230px); }
+.chapter-transition-static .chapter-transition-backdrop { opacity:.9 !important; mask-image:none; }
+.chapter-transition-static .chapter-transition-title { top:50%; transform:translateY(-50%); }
+
+/* Small 3D stage for existing inline board artwork. */
+.parallax-scene { position:relative; perspective:900px; transform-style:preserve-3d; isolation:isolate; }
+.hero-parallax { min-width: min(100%, 380px); display:flex; align-items:center; justify-content:center; }
+.parallax-object { position:relative; z-index:2; transform-style:preserve-3d; }
+.parallax-halo { position:absolute; width:85%; aspect-ratio:1; left:8%; top:3%; border-radius:50%; background:radial-gradient(circle, rgba(25,177,218,.15), rgba(16,75,111,.06) 40%, transparent 70%); filter:blur(10px); }
+.parallax-depth { position:absolute; inset:8% 2%; z-index:0; transform:translateZ(-70px); }
+.parallax-depth i { position:absolute; width:8px; height:8px; border:1px solid rgba(108,232,255,.65); border-radius:50%; box-shadow:0 0 18px rgba(45,205,238,.5); }
+.parallax-depth i:nth-child(1) { left:4%; top:27%; }.parallax-depth i:nth-child(2) { right:2%; top:48%; }.parallax-depth i:nth-child(3) { left:20%; bottom:4%; }
+.hero-parallax > .parallax-object > svg { filter:drop-shadow(0 30px 35px rgba(0,0,0,.45)); }
+
+/* Interactive, clearly labeled circuit simulation. */
+.circuit-lab { border:1px solid rgba(65,207,232,.22); border-radius:16px; padding:18px; margin-top:24px; background:linear-gradient(145deg, rgba(5,17,30,.94), rgba(7,25,41,.86)); box-shadow:inset 0 1px rgba(255,255,255,.035), 0 18px 45px rgba(0,0,0,.18); }
+.circuit-lab-top { display:flex; align-items:center; gap:9px; color:#76ddec; font:700 10px/1.4 ui-monospace,monospace; letter-spacing:.16em; }
+.live-dot { width:7px; height:7px; border-radius:50%; background:#50e0aa; box-shadow:0 0 10px rgba(80,224,170,.6); }
+.lab-readout { margin-left:auto; color:#819baa; letter-spacing:.05em; }
+.circuit-diagram { display:block; width:100%; max-height:260px; margin:4px auto 12px; overflow:visible; }
+.sim-led { opacity:.25; filter:drop-shadow(0 0 0 rgba(57,229,255,0)); animation:led-blink 2s steps(1,end) infinite; }
+@keyframes led-blink { 0%,48% { opacity:.18; filter:drop-shadow(0 0 0 rgba(57,229,255,0)); } 50%,98% { opacity:.95; filter:drop-shadow(0 0 13px rgba(57,229,255,.95)); } }
+.interval-control { display:block; max-width:430px; color:#b3c3cf; font-size:12px; font-weight:600; }
+.interval-control strong { float:right; color:#79e7f7; font-family:ui-monospace,monospace; }
+.interval-control input { width:100%; margin:12px 0 3px; accent-color:#31cbe5; cursor:pointer; }
+.interval-ends { display:flex; justify-content:space-between; color:#708796; font:10px ui-monospace,monospace; }
+.circuit-note { color:#8498a7; font-size:12px; line-height:1.6; border-left:2px solid rgba(245,184,101,.6); padding-left:10px; margin:16px 0 0; }
+
+@media (max-width: 640px) {
+  .chapter-transition-mascot { width:78vw; margin-left:-39vw; }
+  .chapter-energy-trail { width:90vw; margin-left:-45vw; }
+  .chapter-transition-title { top:65%; }
+  .circuit-lab { padding:12px; }
+  .circuit-diagram { min-height:135px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sim-led { animation:none; opacity:.75; filter:drop-shadow(0 0 8px rgba(57,229,255,.6)); }
 }
 
 /* Scrollbar */

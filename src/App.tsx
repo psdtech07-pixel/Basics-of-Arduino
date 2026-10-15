@@ -2,6 +2,7 @@ import Navbar from './components/Navbar';
 import ProgressBar from './components/ProgressBar';
 import BackToTop from './components/BackToTop';
 import PresentationMode from './components/PresentationMode';
+import ChapterTransition from './components/ChapterTransition';
 
 import HeroSection from './sections/HeroSection';
 import IntroSection from './sections/IntroSection';
@@ -29,15 +30,22 @@ export default function App() {
         <HeroSection />
         <IntroSection />
         <McuVsMpuSection />
+        <ChapterTransition chapter="CHAPTER 03" title="Arduino Uno R3" />
         <BoardSection />
+        <ChapterTransition chapter="CHAPTER 04" title="Electronics & breadboards" />
         <ElectronicsSection />
         <BreadboardSection />
+        <ChapterTransition chapter="CHAPTER 06" title="Signals" />
         <SignalsSection />
+        <ChapterTransition chapter="CHAPTER 07" title="Your first program: Blink" />
         <FirstProgramSection />
+        <ChapterTransition chapter="CHAPTER 08" title="Sensors" />
         <LDRSection />
         <UltrasonicSection />
+        <ChapterTransition chapter="CHAPTER 10" title="Output devices & mini project" />
         <OutputDevicesSection />
         <MiniProjectSection />
+        <ChapterTransition chapter="CHAPTER 12" title="Troubleshooting & wrap-up" />
         <TroubleshootingSection />
         <QuizSection />
         <WrapUpSection />
