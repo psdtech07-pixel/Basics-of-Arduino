@@ -41,7 +41,7 @@ export default function FirstProgramSection() {
       <div className="section-container">
         <AnimatedSection>
           <SectionHeading
-            step="Section 06"
+            step="Section 07"
             title="Your First Program: Blink"
             subtitle='The "Hello World" of electronics — making an LED blink. Every Arduino developer starts here.'
           />

@@ -24,7 +24,7 @@ export default function BreadboardSection() {
       <div className="section-container">
         <AnimatedSection>
           <SectionHeading
-            step="Section 04"
+            step="Section 05"
             title="The Breadboard"
             subtitle="A breadboard lets you prototype circuits without soldering. Components plug into holes that are internally connected — understand this layout and you can build any circuit."
           />

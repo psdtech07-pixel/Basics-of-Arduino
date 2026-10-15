@@ -72,7 +72,7 @@ export default function OutputDevicesSection() {
       <div className="section-container">
         <AnimatedSection>
           <SectionHeading
-            step="Section 09"
+            step="Section 10"
             title="Output Devices"
             subtitle="Make the Arduino interact with the physical world — sound with a buzzer, motion with a servo, and text with an LCD display."
           />
@@ -95,7 +95,7 @@ export default function OutputDevicesSection() {
                     <div>
                       <h3 className={`text-2xl font-black text-white`}>{output.name}</h3>
                       <div className={`text-xs font-semibold uppercase tracking-wider ${output.color}`}>
-                        Output Device — Section 09.{i + 1}
+                        Output Device — Section 10.{i + 1}
                       </div>
                     </div>
                   </div>

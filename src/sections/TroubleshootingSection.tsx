@@ -142,7 +142,7 @@ export default function TroubleshootingSection() {
       <div className="section-container">
         <AnimatedSection>
           <SectionHeading
-            step="Section 11"
+            step="Section 12"
             title="Troubleshooting Guide"
             subtitle="Something not working? Here are the most common issues and exactly how to fix them. Troubleshooting is a core engineering skill — systematic diagnosis beats guessing."
           />

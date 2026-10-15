@@ -76,7 +76,7 @@ export default function SignalsSection() {
       <div className="section-container">
         <AnimatedSection>
           <SectionHeading
-            step="Section 05"
+            step="Section 06"
             title="Digital, Analog & PWM Signals"
             subtitle="Understanding how the Arduino communicates with the world — reading sensors and controlling outputs."
           />

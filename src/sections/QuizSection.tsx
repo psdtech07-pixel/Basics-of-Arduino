@@ -8,7 +8,7 @@ export default function QuizSection() {
       <div className="section-container">
         <AnimatedSection>
           <SectionHeading
-            step="Section 12"
+            step="Section 13"
             title="Knowledge Check"
             subtitle="Test your understanding of everything covered in this masterclass. Select an answer for each question, then submit to see your score and explanations."
           />

@@ -82,7 +82,7 @@ export default function WrapUpSection() {
       <div className="section-container">
         <AnimatedSection>
           <SectionHeading
-            step="Section 13 · Wrap-Up"
+            step="Section 14 · Wrap-Up"
             title="What You've Learned"
             subtitle="Congratulations on completing the Arduino Masterclass! You now have a solid foundation in embedded systems and electronics for your ENTC & I&C studies."
           />
@@ -101,7 +101,7 @@ export default function WrapUpSection() {
                   key={i}
                   initial={shouldReduce ? {} : { opacity: 0, x: -10 }}
                   whileInView={shouldReduce ? {} : { opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: false }}
                   transition={{ delay: i * 0.04 }}
                   className="flex items-start gap-2 text-sm text-slate-400"
                 >

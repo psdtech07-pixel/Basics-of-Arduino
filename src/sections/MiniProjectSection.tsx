@@ -55,7 +55,7 @@ export default function MiniProjectSection() {
       <div className="section-container">
         <AnimatedSection>
           <SectionHeading
-            step="Section 10"
+            step="Section 11"
             title="Mini-Project: Distance Warning System"
             subtitle="Combine everything you've learned — ultrasonic sensing, digital outputs, and serial logging — into a real proximity alarm. This is what electronics engineers do: integrate components to solve a problem."
           />

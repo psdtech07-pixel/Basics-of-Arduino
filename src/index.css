@@ -135,3 +135,75 @@
     animation: none;
   }
 }
+
+/* Presentation Mode Overrides under .present only */
+html.present {
+  font-size: 125%;
+}
+
+.present .text-xs {
+  font-size: 0.9rem !important;
+}
+
+.present .text-sm {
+  font-size: 1rem !important;
+}
+
+.present .text-slate-200,
+.present .text-slate-300,
+.present .text-slate-400,
+.present .text-slate-500,
+.present .text-slate-600 {
+  color: #F1F5F9 !important;
+}
+
+.present .text-cyan-300,
+.present .text-cyan-400 {
+  color: #67E8F9 !important;
+}
+
+.present .text-green-400 {
+  color: #86EFAC !important;
+}
+
+.present .text-amber-400 {
+  color: #FCD34D !important;
+}
+
+.present .text-blue-400 {
+  color: #93C5FD !important;
+}
+
+.present .text-purple-400 {
+  color: #D8B4FE !important;
+}
+
+.present .text-red-300,
+.present .text-red-400 {
+  color: #FCA5A5 !important;
+}
+
+.present code,
+.present pre,
+.present pre code,
+.present .code-font {
+  font-size: 18px !important;
+}
+
+.present input[type="range"]::-webkit-slider-thumb {
+  width: 28px !important;
+  height: 28px !important;
+}
+
+.present input[type="range"]::-moz-range-thumb {
+  width: 28px !important;
+  height: 28px !important;
+}
+
+.present *:focus,
+.present *:focus-visible {
+  outline: 3px solid #67E8F9 !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 3px rgba(103, 232, 249, 0.5) !important;
+}
+

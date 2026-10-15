@@ -1,9 +1,11 @@
 import Navbar from './components/Navbar';
 import ProgressBar from './components/ProgressBar';
 import BackToTop from './components/BackToTop';
+import PresentationMode from './components/PresentationMode';
 
 import HeroSection from './sections/HeroSection';
 import IntroSection from './sections/IntroSection';
+import McuVsMpuSection from './sections/McuVsMpuSection';
 import BoardSection from './sections/BoardSection';
 import ElectronicsSection from './sections/ElectronicsSection';
 import BreadboardSection from './sections/BreadboardSection';
@@ -26,6 +28,7 @@ export default function App() {
       <main>
         <HeroSection />
         <IntroSection />
+        <McuVsMpuSection />
         <BoardSection />
         <ElectronicsSection />
         <BreadboardSection />
@@ -40,6 +43,7 @@ export default function App() {
         <WrapUpSection />
       </main>
 
+      <PresentationMode />
       <BackToTop />
     </div>
   );

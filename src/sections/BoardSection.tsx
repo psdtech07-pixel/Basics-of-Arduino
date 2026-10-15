@@ -67,7 +67,7 @@ export default function BoardSection() {
       <div className="section-container">
         <AnimatedSection>
           <SectionHeading
-            step="Section 02"
+            step="Section 03"
             title="The Arduino Uno R3 Board"
             subtitle="Before writing code, understand the hardware you're working with. The Arduino Uno R3 is the classic beginner board — robust, well-documented, and forgiving."
           />

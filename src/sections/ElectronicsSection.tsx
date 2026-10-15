@@ -80,7 +80,7 @@ export default function ElectronicsSection() {
       <div className="section-container">
         <AnimatedSection>
           <SectionHeading
-            step="Section 03"
+            step="Section 04"
             title="Electronics Essentials"
             subtitle="You don't need a full electronics degree. Here are the key concepts and components you'll use in every Arduino project."
           />

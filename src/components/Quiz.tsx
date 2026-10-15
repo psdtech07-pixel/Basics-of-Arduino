@@ -73,7 +73,7 @@ export default function Quiz() {
               key={q.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               transition={{ delay: qi * 0.04 }}
               className="rounded-2xl border border-cyan-900/30 bg-navy-800 overflow-hidden"
             >
