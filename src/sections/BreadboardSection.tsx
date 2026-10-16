@@ -1,6 +1,7 @@
 import AnimatedSection from '../components/AnimatedSection';
 import SectionHeading from '../components/SectionHeading';
 import SafetyWarning from '../components/SafetyWarning';
+import ComponentPhoto from '../components/ComponentPhoto';
 
 const rows = [
   { label: 'Power Rail (+)', color: '#ef4444', desc: 'Red line — connects to 5V or 3.3V. Runs the length of the board.' },
@@ -36,7 +37,7 @@ export default function BreadboardSection() {
             <h3 className="text-lg font-bold text-white mb-6">Breadboard Anatomy</h3>
 
             {/* SVG Breadboard */}
-            <div className="flex justify-center mb-6">
+            <div className="grid md:grid-cols-2 gap-6 items-center mb-6">
               <svg
                 viewBox="0 0 500 160"
                 className="w-full max-w-xl"
@@ -90,6 +91,11 @@ export default function BreadboardSection() {
                 <line x1="46" y1="67" x2="46" y2="44" stroke="rgba(239,68,68,0.3)" strokeWidth="1.5" strokeDasharray="2 2" />
                 <text x="34" y="63" fontSize="6" fill="rgba(239,68,68,0.6)" fontFamily="monospace">wire</text>
               </svg>
+              <ComponentPhoto
+                file="Breadboard and jumper wires.png"
+                alt="Full-size solderless breadboard beside a set of jumper wires"
+                size="wide"
+              />
             </div>
 
             {/* Rail legend */}

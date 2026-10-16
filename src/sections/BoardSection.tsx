@@ -2,6 +2,7 @@ import AnimatedSection from '../components/AnimatedSection';
 import SectionHeading from '../components/SectionHeading';
 import SafetyWarning from '../components/SafetyWarning';
 import PinoutExplorer from '../components/PinoutExplorer';
+import ComponentPhoto from '../components/ComponentPhoto';
 
 const specs = [
   { label: 'Microcontroller', value: 'ATmega328P' },
@@ -73,6 +74,16 @@ export default function BoardSection() {
           />
         </AnimatedSection>
 
+        <AnimatedSection>
+          <div className="flex justify-center mb-12">
+            <ComponentPhoto
+              file="Arduino-Uno.png"
+              alt="Arduino Uno R3 board with USB Type-B connector, ATmega328P, digital and analog pins"
+              size="board"
+            />
+          </div>
+        </AnimatedSection>
+
         {/* Specs table */}
         <AnimatedSection>
           <div className="rounded-2xl border border-cyan-900/30 bg-navy-800 overflow-hidden mb-12">
@@ -124,11 +135,31 @@ export default function BoardSection() {
           ]} />
         </AnimatedSection>
 
+        {/* Supplementary reference, separate from the interactive SVG below */}
+        <AnimatedSection>
+          <div className="grid md:grid-cols-[minmax(0,1fr)_minmax(260px,.9fr)] gap-6 items-center rounded-2xl border border-cyan-900/30 bg-navy-800 p-5 mb-6">
+            <div>
+              <h3 className="text-xl font-bold text-white mb-2">Arduino Uno Pinout Reference</h3>
+              <p className="text-sm text-slate-400 leading-relaxed">
+                Use this labeled board image as a quick reference for the physical pin names. The interactive explorer below is a separate diagram: select a pin there to see its purpose, capabilities, and safety notes.
+              </p>
+            </div>
+            <ComponentPhoto
+              file="ArduinoPinout.webp"
+              alt="Labeled Arduino Uno R3 pinout reference showing digital and analog pins, power pins, USB port, DC jack, and reset button"
+              size="reference"
+              caption="Arduino Uno R3 Pinout Reference"
+            />
+          </div>
+        </AnimatedSection>
+
         {/* Interactive Pinout */}
         <AnimatedSection>
           <h3 className="text-xl font-bold text-white mb-2">Interactive Pinout Explorer</h3>
           <p className="text-slate-400 text-sm mb-6">Click any pin on the board to learn its purpose and how to use it safely.</p>
-          <PinoutExplorer />
+          <div data-no-presentation-zoom>
+            <PinoutExplorer />
+          </div>
         </AnimatedSection>
       </div>
     </section>

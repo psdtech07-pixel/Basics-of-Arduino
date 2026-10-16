@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Copy, Check, X } from 'lucide-react';
+import SyntaxHighlightedCode from './SyntaxHighlightedCode';
 
 interface Props {
   code: string;
@@ -60,7 +61,7 @@ export default function CodeBlock({ code, language = 'cpp', title, description }
         </div>
       </div>
       <pre className="overflow-x-auto p-4 text-sm leading-relaxed">
-        <code className="text-slate-200 font-mono">{code}</code>
+        <code className="syntax-code font-mono"><SyntaxHighlightedCode code={code} language={language} /></code>
       </pre>
     </div>
   );

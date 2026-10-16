@@ -59,7 +59,7 @@ export default function PresentationMode() {
   useEffect(() => {
     const markZoomable = () => {
       document.querySelectorAll('pre, svg:not(.lucide)').forEach(el => {
-        if (!el.closest('button, a, .zoom-overlay, .presentation-toggle')) {
+        if (!el.closest('button, a, .zoom-overlay, .presentation-toggle, [data-no-presentation-zoom]')) {
           if (!el.hasAttribute('tabindex')) {
             el.setAttribute('tabindex', '0');
           }
@@ -90,6 +90,8 @@ export default function PresentationMode() {
 
       // Don't trigger if clicking inside the zoom overlay itself
       if (target.closest('.zoom-overlay')) return;
+      // Interactive diagrams own their click and keyboard interactions.
+      if (target.closest('[data-no-presentation-zoom]')) return;
 
       // Check for <pre> code blocks
       const pre = target.closest('pre');

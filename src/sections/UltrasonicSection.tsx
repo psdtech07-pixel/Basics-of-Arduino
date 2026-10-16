@@ -3,6 +3,7 @@ import SectionHeading from '../components/SectionHeading';
 import CodeBlock from '../components/CodeBlock';
 import WiringDiagram from '../components/WiringDiagram';
 import UltrasonicSimulation from '../components/UltrasonicSimulation';
+import ComponentPhoto from '../components/ComponentPhoto';
 import { codeExamples } from '../data/codeExamples';
 
 const timing = [
@@ -74,6 +75,24 @@ export default function UltrasonicSection() {
         <AnimatedSection>
           <div className="rounded-2xl border border-cyan-900/30 bg-navy-800 p-6 mb-8">
             <h3 className="text-xl font-bold text-white mb-4">HC-SR04 Ultrasonic Sensor</h3>
+
+            <div className="grid md:grid-cols-[minmax(220px,300px)_minmax(0,1fr)] gap-6 items-center mb-6">
+              <ComponentPhoto
+                file="HC-SR04 ultrasonic sensor.png"
+                alt="HC-SR04 ultrasonic distance sensor module with two round ultrasonic transducers and four pins"
+                size="reference"
+                caption="HC-SR04 ultrasonic distance sensor"
+              />
+              <div className="space-y-3 text-sm text-slate-300 leading-relaxed">
+                <p className="text-white font-semibold">Four pins connect power and the measurement signal:</p>
+                <ul className="grid sm:grid-cols-2 gap-3">
+                  <li className="rounded-lg border border-red-500/20 bg-red-500/5 p-3"><strong className="text-red-300">VCC</strong><span className="block text-slate-400">5V power for the sensor.</span></li>
+                  <li className="rounded-lg border border-cyan-500/20 bg-cyan-500/5 p-3"><strong className="text-cyan-300">TRIG</strong><span className="block text-slate-400">Arduino output; send a short pulse to start a reading.</span></li>
+                  <li className="rounded-lg border border-amber-500/20 bg-amber-500/5 p-3"><strong className="text-amber-300">ECHO</strong><span className="block text-slate-400">Arduino input; pulse duration reports the round-trip time.</span></li>
+                  <li className="rounded-lg border border-slate-500/20 bg-slate-500/5 p-3"><strong className="text-slate-200">GND</strong><span className="block text-slate-400">Ground; share it with the Arduino.</span></li>
+                </ul>
+              </div>
+            </div>
 
             <div className="space-y-3 text-sm text-slate-300 leading-relaxed mb-6">
               <p>
@@ -190,19 +209,26 @@ export default function UltrasonicSection() {
           <div className="rounded-2xl border border-cyan-900/30 bg-navy-800 p-6 mt-8 mb-8">
             <h3 className="text-xl font-bold text-white mb-4">IR Obstacle Sensor</h3>
 
-            <div className="space-y-4 text-sm text-slate-300 leading-relaxed mb-6">
-              <p>
-                <strong className="text-white">What it detects:</strong> an object in front of it (about 2 to 30 cm, adjustable).
-              </p>
-              <p>
-                <strong className="text-white">How it works:</strong> the module has an <strong className="text-cyan-300">infrared LED</strong> that constantly sends out invisible light, and a <strong className="text-cyan-300">photodiode</strong> that receives it. If an object is in front, it reflects some light back to the photodiode, which then conducts more current. An onboard <strong className="text-white">LM393 comparator</strong> compares that signal with a threshold (set by the blue pot) and switches the output cleanly between HIGH and LOW. A small LED on the board lights when an obstacle is seen.
-              </p>
-              <p>
-                <strong className="text-white">Electrical signal:</strong> a digital level. <strong className="text-cyan-300">LOW = obstacle detected, HIGH = clear</strong> (active low).
-              </p>
-              <p>
-                <strong className="text-white">How Arduino reads it:</strong> <code className="text-cyan-300">digitalRead()</code>.
-              </p>
+            <div className="grid md:grid-cols-[260px_minmax(0,1fr)] gap-6 items-start mb-6">
+              <ComponentPhoto
+                file="IR sensor module.png"
+                alt="Infrared obstacle sensor module with IR emitter, receiver, comparator, adjustment potentiometer, and three pins"
+                size="wide"
+              />
+              <div className="space-y-4 text-sm text-slate-300 leading-relaxed">
+                <p>
+                  <strong className="text-white">What it detects:</strong> an object in front of it (about 2 to 30 cm, adjustable).
+                </p>
+                <p>
+                  <strong className="text-white">How it works:</strong> the module has an <strong className="text-cyan-300">infrared LED</strong> that constantly sends out invisible light, and a <strong className="text-cyan-300">photodiode</strong> that receives it. If an object is in front, it reflects some light back to the photodiode, which then conducts more current. An onboard <strong className="text-white">LM393 comparator</strong> compares that signal with a threshold (set by the blue pot) and switches the output cleanly between HIGH and LOW. A small LED on the board lights when an obstacle is seen.
+                </p>
+                <p>
+                  <strong className="text-white">Electrical signal:</strong> a digital level. <strong className="text-cyan-300">LOW = obstacle detected, HIGH = clear</strong> (active low).
+                </p>
+                <p>
+                  <strong className="text-white">How Arduino reads it:</strong> <code className="text-cyan-300">digitalRead()</code>.
+                </p>
+              </div>
             </div>
 
             {/* Wiring Table */}

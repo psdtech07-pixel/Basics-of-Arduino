@@ -3,6 +3,7 @@ import SectionHeading from '../components/SectionHeading';
 import CodeBlock from '../components/CodeBlock';
 import { codeExamples } from '../data/codeExamples';
 import BlinkCircuit from '../components/BlinkCircuit';
+import ComponentPhoto from '../components/ComponentPhoto';
 
 const sketchStructure = [
   {
@@ -46,6 +47,47 @@ export default function FirstProgramSection() {
             title="Your First Program: Blink"
             subtitle='The "Hello World" of electronics — making an LED blink. Every Arduino developer starts here.'
           />
+        </AnimatedSection>
+
+        <AnimatedSection>
+          <div className="grid md:grid-cols-[minmax(0,1fr)_260px] gap-6 items-center rounded-2xl border border-cyan-900/30 bg-navy-800 p-5 mb-8">
+            <div>
+              <h3 className="text-lg font-bold text-white mb-2">Connect the Uno to your computer</h3>
+              <p className="text-sm text-slate-300 leading-relaxed">
+                The classic Uno R3 uses a USB-A to USB-B cable: connect the square Type-B plug to the board and the Type-A plug to your computer. Use a data-capable cable to upload sketches and open Serial Monitor; a charge-only cable will not transfer data.
+              </p>
+            </div>
+            <ComponentPhoto
+              file="USB-A-to-B-cable.jpg"
+              alt="USB-A to USB-B cable used to connect a classic Arduino Uno R3 to a computer"
+              size="photo"
+              caption={<>Photo by <a href="https://commons.wikimedia.org/wiki/File:A-B_Usb_Cable.jpg" target="_blank" rel="noreferrer" className="underline decoration-cyan-700 underline-offset-2">oomlout</a>, <a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank" rel="noreferrer" className="underline decoration-cyan-700 underline-offset-2">CC BY-SA 2.0</a>.</>}
+            />
+          </div>
+        </AnimatedSection>
+
+        <AnimatedSection>
+          <div className="rounded-2xl border border-cyan-900/30 bg-navy-800 p-5 md:p-6 mb-8">
+            <h3 className="text-lg font-bold text-white mb-2">Writing and Uploading Code</h3>
+            <p className="text-sm text-slate-300 leading-relaxed mb-5">
+              The Arduino IDE is where you write a sketch, check it, and send it to your board. The annotated view below highlights the main controls; choose the connected board and port before uploading.
+            </p>
+            <div className="grid lg:grid-cols-[minmax(0,1.45fr)_minmax(250px,.75fr)] gap-6 items-center">
+              <ComponentPhoto
+                file="ArduinoIDE.png"
+                alt="Arduino IDE 2 interface showing the sketch editor, Verify and Upload buttons, board and port selection, and Serial Monitor"
+                size="interface"
+                caption="Arduino IDE 2: sketch editor and the main upload controls"
+              />
+              <ul className="grid sm:grid-cols-2 lg:grid-cols-1 gap-3 text-sm">
+                <li className="rounded-lg border border-cyan-500/15 bg-navy-950/70 p-3"><strong className="text-cyan-300">Code editor</strong><span className="block mt-1 text-slate-400">Write and edit the sketch here.</span></li>
+                <li className="rounded-lg border border-cyan-500/15 bg-navy-950/70 p-3"><strong className="text-cyan-300">Verify</strong><span className="block mt-1 text-slate-400">Compile the sketch and check for errors.</span></li>
+                <li className="rounded-lg border border-cyan-500/15 bg-navy-950/70 p-3"><strong className="text-cyan-300">Upload</strong><span className="block mt-1 text-slate-400">Compile and transfer the sketch to the board.</span></li>
+                <li className="rounded-lg border border-cyan-500/15 bg-navy-950/70 p-3"><strong className="text-cyan-300">Board and port</strong><span className="block mt-1 text-slate-400">Select the Arduino model and its connected USB port.</span></li>
+                <li className="rounded-lg border border-cyan-500/15 bg-navy-950/70 p-3"><strong className="text-cyan-300">Serial Monitor</strong><span className="block mt-1 text-slate-400">View text sent by the sketch with Serial.</span></li>
+              </ul>
+            </div>
+          </div>
         </AnimatedSection>
 
         {/* Sketch structure */}
@@ -113,6 +155,20 @@ export default function FirstProgramSection() {
 
         {/* Digital I/O */}
         <AnimatedSection>
+          <div className="grid md:grid-cols-[260px_minmax(0,1fr)] gap-6 items-center rounded-2xl border border-cyan-900/30 bg-navy-800 p-5 mb-6">
+            <ComponentPhoto
+              file="Tactile-switch-disassembled.jpg"
+              alt="Tactile push-button switch shown assembled and with its internal contact pieces"
+              size="photo"
+              caption={<>Photo by <a href="https://commons.wikimedia.org/wiki/File:Tactile_switch_disassembled.jpg" target="_blank" rel="noreferrer" className="underline decoration-cyan-700 underline-offset-2">Pabloab</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noreferrer" className="underline decoration-cyan-700 underline-offset-2">CC BY-SA 4.0</a>.</>}
+            />
+            <div>
+              <h3 className="text-lg font-bold text-white mb-2">Physical digital input: a tactile button</h3>
+              <p className="text-sm text-slate-300 leading-relaxed">
+                In the example below, the button connects Arduino pin D2 to ground when pressed. The internal pull-up keeps the released input HIGH, so a press reads LOW. The photograph shows a tactile switch and its contact mechanism.
+              </p>
+            </div>
+          </div>
           <CodeBlock
             title={digitalIo.title}
             code={digitalIo.code}

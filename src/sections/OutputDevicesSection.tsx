@@ -3,12 +3,13 @@ import SectionHeading from '../components/SectionHeading';
 import CodeBlock from '../components/CodeBlock';
 import WiringDiagram from '../components/WiringDiagram';
 import { codeExamples } from '../data/codeExamples';
-import { motion, useReducedMotion } from 'framer-motion';
+import ComponentPhoto from '../components/ComponentPhoto';
 
 const outputs = [
   {
     name: 'Buzzer',
-    emoji: '🔔',
+    image: 'Buzzer.png',
+    imageAlt: 'Small black cylindrical electronic buzzer with sound opening and two leads',
     color: 'text-purple-400',
     border: 'border-purple-500/20',
     bg: 'bg-purple-500/5',
@@ -25,7 +26,8 @@ const outputs = [
   },
   {
     name: 'Servo Motor',
-    emoji: '⚙️',
+    image: 'Servo motor (SG90).png',
+    imageAlt: 'SG90 micro servo motor with blue case, three-wire lead, and white servo horns',
     color: 'text-blue-400',
     border: 'border-blue-500/20',
     bg: 'bg-blue-500/5',
@@ -44,7 +46,9 @@ const outputs = [
   },
   {
     name: '16×2 LCD (I²C)',
-    emoji: '📺',
+    image: '16×2 LCD display.png',
+    imageAlt: '16 by 2 character LCD module with green display and I²C backpack attached',
+    imageCaption: 'This photograph shows an I²C backpack attached. A standard parallel LCD exposes more pins; this lesson uses SDA and SCL.',
     color: 'text-green-400',
     border: 'border-green-500/20',
     bg: 'bg-green-500/5',
@@ -65,8 +69,6 @@ const outputs = [
 ];
 
 export default function OutputDevicesSection() {
-  const shouldReduce = useReducedMotion();
-
   return (
     <section id="outputs" className="relative bg-navy-950/50">
       <div className="section-container">
@@ -86,12 +88,6 @@ export default function OutputDevicesSection() {
               <div key={output.name}>
                 <AnimatedSection>
                   <div className="flex items-center gap-4 mb-6">
-                    <motion.div
-                      whileHover={shouldReduce ? {} : { rotate: [0, -10, 10, 0], scale: 1.1 }}
-                      className="text-4xl"
-                    >
-                      {output.emoji}
-                    </motion.div>
                     <div>
                       <h3 className={`text-2xl font-black text-white`}>{output.name}</h3>
                       <div className={`text-xs font-semibold uppercase tracking-wider ${output.color}`}>
@@ -101,7 +97,16 @@ export default function OutputDevicesSection() {
                   </div>
                 </AnimatedSection>
 
-                <div className="grid lg:grid-cols-2 gap-6 mb-6">
+                <div className="grid lg:grid-cols-3 gap-6 mb-6">
+                  <AnimatedSection delay={0.05}>
+                    <ComponentPhoto
+                      file={output.image}
+                      alt={output.imageAlt}
+                      size="wide"
+                      caption={output.imageCaption}
+                    />
+                  </AnimatedSection>
+
                   {/* Wiring */}
                   <AnimatedSection delay={0.1}>
                     <WiringDiagram

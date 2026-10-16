@@ -2,6 +2,7 @@ import AnimatedSection from '../components/AnimatedSection';
 import SectionHeading from '../components/SectionHeading';
 import SafetyWarning from '../components/SafetyWarning';
 import { motion, useReducedMotion } from 'framer-motion';
+import ComponentPhoto from '../components/ComponentPhoto';
 
 const components = [
   {
@@ -104,15 +105,20 @@ export default function ElectronicsSection() {
 
             {/* LED resistor calculation */}
             <div className="rounded-xl bg-navy-950 border border-cyan-900/20 p-5">
-              <p className="text-sm font-bold text-white mb-3">🔢 Practical: Choosing an LED Resistor</p>
-              <div className="font-mono text-sm space-y-1.5 text-slate-300">
-                <div>Supply voltage: <span className="text-cyan-400">5 V</span></div>
-                <div>LED forward voltage: <span className="text-yellow-400">~2 V</span></div>
-                <div>Desired LED current: <span className="text-green-400">~15 mA = 0.015 A</span></div>
-                <div className="border-t border-cyan-900/30 pt-2 mt-2">
-                  R = (V<sub>supply</sub> − V<sub>LED</sub>) / I<sub>LED</sub>
+              <div className="grid md:grid-cols-[150px_minmax(0,1fr)] gap-4 items-center">
+                <ComponentPhoto file="resistors.png" alt="Axial through-hole resistor with colored value bands and two wire leads" size="thumbnail" />
+                <div>
+                  <p className="text-sm font-bold text-white mb-3">Practical: Choosing an LED Resistor</p>
+                  <div className="font-mono text-sm space-y-1.5 text-slate-300">
+                    <div>Supply voltage: <span className="text-cyan-400">5 V</span></div>
+                    <div>LED forward voltage: <span className="text-yellow-400">~2 V</span></div>
+                    <div>Desired LED current: <span className="text-green-400">~15 mA = 0.015 A</span></div>
+                    <div className="border-t border-cyan-900/30 pt-2 mt-2">
+                      R = (V<sub>supply</sub> − V<sub>LED</sub>) / I<sub>LED</sub>
+                    </div>
+                    <div className="text-cyan-400">R = (5 − 2) / 0.015 = <strong>200 Ω</strong> → use <strong>220 Ω</strong> (next standard value)</div>
+                  </div>
                 </div>
-                <div className="text-cyan-400">R = (5 − 2) / 0.015 = <strong>200 Ω</strong> → use <strong>220 Ω</strong> (next standard value)</div>
               </div>
             </div>
           </div>
@@ -143,6 +149,19 @@ export default function ElectronicsSection() {
                   <span className={`text-2xl font-black font-mono ${comp.color}`}>{comp.symbol}</span>
                   <h3 className="font-bold text-white">{comp.name}</h3>
                 </div>
+                {comp.name === 'LED' && (
+                  <>
+                    <ComponentPhoto file="led.png" alt="Red, green, and blue through-hole LEDs with visible anode and cathode leads" size="thumbnail" className="mb-3" />
+                    <svg viewBox="0 0 260 74" className="w-full h-[74px] mb-3 rounded-lg bg-navy-950/70 border border-cyan-900/20" role="img" aria-label="LED polarity diagram: current flows from anode positive through the LED to cathode negative, with a series resistor">
+                      <path d="M18 36h28l7-10 10 20 10-20 10 20 10-10h16m0 0 30-18v36l-30-18m30 0h8m0-14v28m0-14h39" fill="none" stroke="#7de9f5" strokeWidth="2" strokeLinejoin="round" />
+                      <path d="m129 18 9-9m-1 13 9-9" stroke="#7de9f5" strokeWidth="1.5" />
+                      <path d="m138 9-2 7 7-2m-5 8-2 7 7-2" fill="none" stroke="#7de9f5" strokeWidth="1.5" />
+                      <text x="20" y="65" fill="#9fb2c0" fontSize="9">+ Anode</text>
+                      <text x="158" y="65" fill="#9fb2c0" fontSize="9">Cathode −</text>
+                      <text x="49" y="15" fill="#9fb2c0" fontSize="9">Series resistor</text>
+                    </svg>
+                  </>
+                )}
                 <p className="text-sm text-slate-400 mb-3 leading-relaxed">{comp.desc}</p>
                 <div className="p-2.5 rounded-lg bg-navy-900/60 mb-2">
                   <p className="text-xs text-slate-500 mb-0.5 font-semibold">Analogy</p>

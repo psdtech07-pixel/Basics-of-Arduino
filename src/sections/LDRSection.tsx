@@ -3,6 +3,7 @@ import SectionHeading from '../components/SectionHeading';
 import CodeBlock from '../components/CodeBlock';
 import WiringDiagram from '../components/WiringDiagram';
 import LDRSimulation from '../components/LDRSimulation';
+import ComponentPhoto from '../components/ComponentPhoto';
 import { codeExamples } from '../data/codeExamples';
 
 const dividerTableRows = [
@@ -174,13 +175,16 @@ export default function LDRSection() {
         <AnimatedSection>
           <div className="rounded-2xl border border-cyan-900/30 bg-navy-800 p-6 mb-8">
             <h3 className="text-xl font-bold text-white mb-4">LDR (Light Dependent Resistor)</h3>
-            <div className="space-y-4 text-sm text-slate-300 leading-relaxed mb-6">
-              <p>
-                <strong className="text-white">How it works:</strong> the LDR's surface is a light-sensitive semiconductor (cadmium sulfide). In the dark, few electrons are free to carry current, so <strong className="text-white">resistance is high</strong> (hundreds of kilohms up to megohms). When light hits it, photons give electrons enough energy to break free. More free electrons means more current flows, so <strong className="text-white">resistance falls</strong> (to roughly a few kilohms or less in bright light). The exact values vary between parts.
-              </p>
-              <p>
-                <strong className="text-white">Electrical signal:</strong> a resistance that drops as light increases. A voltage divider turns that into a voltage.
-              </p>
+            <div className="grid md:grid-cols-[190px_minmax(0,1fr)] gap-6 items-center mb-6">
+              <ComponentPhoto file="ldr.png" alt="Light-dependent resistor photoresistor with a circular light-sensitive face and two leads" />
+              <div className="space-y-4 text-sm text-slate-300 leading-relaxed">
+                <p>
+                  <strong className="text-white">How it works:</strong> the LDR's surface is a light-sensitive semiconductor (cadmium sulfide). In the dark, few electrons are free to carry current, so <strong className="text-white">resistance is high</strong> (hundreds of kilohms up to megohms). When light hits it, photons give electrons enough energy to break free. More free electrons means more current flows, so <strong className="text-white">resistance falls</strong> (to roughly a few kilohms or less in bright light). The exact values vary between parts.
+                </p>
+                <p>
+                  <strong className="text-white">Electrical signal:</strong> a resistance that drops as light increases. A voltage divider turns that into a voltage.
+                </p>
+              </div>
             </div>
 
             {/* Existing Voltage Divider content */}
@@ -280,30 +284,33 @@ export default function LDRSection() {
           <div className="rounded-2xl border border-cyan-900/30 bg-navy-800 p-6 mb-8">
             <h3 className="text-xl font-bold text-white mb-4">NTC Thermistor (temperature)</h3>
 
-            <div className="space-y-4 text-sm text-slate-300 leading-relaxed mb-6">
-              <p>
-                <strong className="text-white">What it measures:</strong> temperature.
-              </p>
-              <p>
-                <strong className="text-white">How it works:</strong> an NTC (negative temperature coefficient) thermistor is a ceramic made from metal oxides. Heat gives its charge carriers more energy, so more of them are free to conduct. <strong className="text-white">As temperature rises, resistance falls</strong>, and it falls fast and non-linearly. A common 10k part has <strong className="text-cyan-300">10 kohm at 25 C</strong>.
-              </p>
-              <p className="font-mono text-cyan-300 bg-navy-950 p-3 rounded-xl border border-cyan-900/30">
-                R = R0 &times; e^(B &times; (1/T - 1/T0))
-              </p>
-              <p>
-                where T is in kelvin, R0 is the resistance at T0 (298.15 K = 25 C), and <strong className="text-white">B</strong> is a constant for the part (about 3950 for typical 10k modules; check yours).
-              </p>
-              <p>
-                <strong className="text-white">Electrical signal:</strong> a resistance that changes with temperature. A divider turns it into a voltage.
-              </p>
-              <p>
-                <strong className="text-white">How Arduino reads it:</strong> read the ADC, work backwards to the thermistor's resistance, then use the Beta equation to get temperature:
-              </p>
-              <ol className="list-decimal list-inside font-mono text-cyan-300 space-y-1 ml-2">
-                <li>R_therm = 10000 &times; (1023 / adc - 1) (from the divider)</li>
-                <li>1/T = 1/T0 + (1/B) &times; ln(R / R0)</li>
-                <li>degrees C = T - 273.15</li>
-              </ol>
+            <div className="grid md:grid-cols-[190px_minmax(0,1fr)] gap-6 items-start mb-6">
+              <ComponentPhoto file="thermistor.png" alt="NTC thermistor bead with two metal leads" />
+              <div className="space-y-4 text-sm text-slate-300 leading-relaxed">
+                <p>
+                  <strong className="text-white">What it measures:</strong> temperature.
+                </p>
+                <p>
+                  <strong className="text-white">How it works:</strong> an NTC (negative temperature coefficient) thermistor is a ceramic made from metal oxides. Heat gives its charge carriers more energy, so more of them are free to conduct. <strong className="text-white">As temperature rises, resistance falls</strong>, and it falls fast and non-linearly. A common 10k part has <strong className="text-cyan-300">10 kohm at 25 C</strong>.
+                </p>
+                <p className="font-mono text-cyan-300 bg-navy-950 p-3 rounded-xl border border-cyan-900/30">
+                  R = R0 &times; e^(B &times; (1/T - 1/T0))
+                </p>
+                <p>
+                  where T is in kelvin, R0 is the resistance at T0 (298.15 K = 25 C), and <strong className="text-white">B</strong> is a constant for the part (about 3950 for typical 10k modules; check yours).
+                </p>
+                <p>
+                  <strong className="text-white">Electrical signal:</strong> a resistance that changes with temperature. A divider turns it into a voltage.
+                </p>
+                <p>
+                  <strong className="text-white">How Arduino reads it:</strong> read the ADC, work backwards to the thermistor's resistance, then use the Beta equation to get temperature:
+                </p>
+                <ol className="list-decimal list-inside font-mono text-cyan-300 space-y-1 ml-2">
+                  <li>R_therm = 10000 &times; (1023 / adc - 1) (from the divider)</li>
+                  <li>1/T = 1/T0 + (1/B) &times; ln(R / R0)</li>
+                  <li>degrees C = T - 273.15</li>
+                </ol>
+              </div>
             </div>
 
             {/* Divider Schematic (reusing LDR diagram with changed labels) */}
@@ -370,19 +377,22 @@ export default function LDRSection() {
           <div className="rounded-2xl border border-cyan-900/30 bg-navy-800 p-6 mb-8">
             <h3 className="text-xl font-bold text-white mb-4">Potentiometer</h3>
 
-            <div className="space-y-4 text-sm text-slate-300 leading-relaxed mb-6">
-              <p>
-                <strong className="text-white">What it measures:</strong> the angle of a knob.
-              </p>
-              <p>
-                <strong className="text-white">How it works:</strong> a potentiometer is a resistive track with three terminals. The two outer ends connect to the track, and a sliding contact called the <strong className="text-white">wiper</strong> touches the track at the middle pin. Turning the knob moves the wiper, which splits the track into two resistors, R1 (to 5 V) and R2 (to GND). That makes a voltage divider whose ratio you set by hand.
-              </p>
-              <p>
-                <strong className="text-white">Electrical signal:</strong> a voltage on the wiper, <code className="text-cyan-300">Vwiper = 5 V &times; R2 / (R1 + R2)</code>, changing smoothly and linearly from 0 V to 5 V as you turn.
-              </p>
-              <p>
-                <strong className="text-white">How Arduino reads it:</strong> the wiper goes to an analog pin, and the ADC returns 0 to 1023.
-              </p>
+            <div className="grid md:grid-cols-[190px_minmax(0,1fr)] gap-6 items-center mb-6">
+              <ComponentPhoto file="Potentiometer.png" alt="Rotary potentiometer with a metal shaft, resistive track, and three terminals" />
+              <div className="space-y-4 text-sm text-slate-300 leading-relaxed">
+                <p>
+                  <strong className="text-white">What it measures:</strong> the angle of a knob.
+                </p>
+                <p>
+                  <strong className="text-white">How it works:</strong> a potentiometer is a resistive track with three terminals. The two outer ends connect to the track, and a sliding contact called the <strong className="text-white">wiper</strong> touches the track at the middle pin. Turning the knob moves the wiper, which splits the track into two resistors, R1 (to 5 V) and R2 (to GND). That makes a voltage divider whose ratio you set by hand.
+                </p>
+                <p>
+                  <strong className="text-white">Electrical signal:</strong> a voltage on the wiper, <code className="text-cyan-300">Vwiper = 5 V &times; R2 / (R1 + R2)</code>, changing smoothly and linearly from 0 V to 5 V as you turn.
+                </p>
+                <p>
+                  <strong className="text-white">How Arduino reads it:</strong> the wiper goes to an analog pin, and the ADC returns 0 to 1023.
+                </p>
+              </div>
             </div>
 
             {/* Wiring */}
